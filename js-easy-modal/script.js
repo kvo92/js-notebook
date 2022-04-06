@@ -2,7 +2,7 @@ import { qs, qsa } from "./domUtils";
 
 const containers = qsa(".modal-container");
 
-const setEventListner = (modalOpenButton, modalCloseButton, modal) => {
+const setEventListener = (modalOpenButton, modalCloseButton, modal) => {
   modalOpenButton.addEventListener("click", () => {
     modal.showModal();
   });
@@ -17,6 +17,6 @@ export const modalInit = () => {
     const modal = qs(".modal", container);
     const modalOpenButton = qs(".open-button", container);
     const modalCloseButton = qs(".close-button", container);
-    setEventListner(modalOpenButton, modalCloseButton, modal);
+    setEventListener(modalOpenButton, modalCloseButton, modal);
   });
 };
