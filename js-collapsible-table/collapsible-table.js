@@ -10,6 +10,7 @@ const headers = qsa("th", collapsibleTable);
 const rows = qsa("tr", collapsibleTable);
 var columns = [];
 
+// added comment
 const findCollapsedColumns = () => {
   for (var i = 0; i < headers.length; i++) {
     if (headers[i].classList.contains("collapsed")) {
