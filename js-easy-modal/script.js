@@ -11,7 +11,7 @@ const setEventListener = (modalOpenButton, modalCloseButton, modal) => {
     modal.close();
   });
 };
-//added comment 2
+//added comment 3
 export const modalInit = () => {
   containers.forEach((container) => {
     const modal = qs(".modal", container);
