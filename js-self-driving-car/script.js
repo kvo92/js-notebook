@@ -4,20 +4,27 @@ let G;
 const setGlobal = () => {
   G = {
     canvas: gbi("canvas"),
-    context: canvas.getContext("2d"), // drawing context
+    context: canvas.getContext("2d"),
+    car: new Car(100, 100, 30, 50), //x,y,h,w // drawing context
   };
 };
 const settingCanvas = () => {
-  G.canvas.height = window.innerHeight;
   G.canvas.width = 200;
 };
 const drawCar = () => {
-  const car = new Car(100, 100, 30, 50); //x,y,h,w
-  car.draw(G.context);
+  G.car.draw(G.context);
+};
+const animate = () => {
+  // resize canvas, clear the before trailing
+  G.canvas.height = window.innerHeight;
+  G.car.update();
+  G.car.draw(G.context);
+  requestAnimationFrame(animate);
 };
 const init = () => {
   setGlobal();
   settingCanvas();
   drawCar();
+  animate();
 };
 init();
