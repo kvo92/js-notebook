@@ -3,8 +3,6 @@ export class Road {
     this.x = x;
     this.width = width;
     this.laneCount = laneCount;
-    console.log(x);
-    console.log(width);
     this.left = x - width / 2;
     this.right = x + width / 2;
 
