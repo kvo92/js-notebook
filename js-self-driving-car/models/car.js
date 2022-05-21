@@ -34,6 +34,9 @@ export class Car {
     context.restore();
   }
   update() {
+    this.#move();
+  }
+  #move() {
     if (this.controls.fw) {
       // this.y -= 2;
       this.speed += this.acceleration;
@@ -58,13 +61,18 @@ export class Car {
       this.speed = 0;
     }
 
-    if (this.controls.l) {
-      // this.x -= 2;
-      this.angle += 0.03;
-    } else if (this.controls.r) {
-      // this.x += 2;
-      this.angle -= 0.03;
+    if (this.speed != 0) {
+      const flip = this.speed > 0 ? 1 : -1;
+
+      if (this.controls.l) {
+        // this.x -= 2;
+        this.angle += 0.03 * flip;
+      } else if (this.controls.r) {
+        // this.x += 2;
+        this.angle -= 0.03 * flip;
+      }
     }
+
     this.x -= Math.sin(this.angle) * this.speed;
     this.y -= Math.cos(this.angle) * this.speed;
     // this.y -= this.speed;
