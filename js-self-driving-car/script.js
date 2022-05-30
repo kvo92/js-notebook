@@ -8,11 +8,13 @@ let G;
 const setGlobal = () => {
   let canvas = gbi("canvas");
   canvas.width = 200;
+  let road = new Road(canvas.width / 2, canvas.width * 0.9);
+  let car = new Car(road.getLaneCenter(1), 100, 30, 50);
   G = {
     canvas: canvas,
     context: canvas.getContext("2d"),
-    road: new Road(canvas.width / 2, canvas.width * 0.9),
-    car: new Car(100, 100, 30, 50), //x,y,h,w // drawing context
+    road: road,
+    car: car, //x,y,h,w // drawing context
   };
 };
 
@@ -22,6 +24,10 @@ const drawCar = () => {
 const animate = () => {
   // resize canvas, clear the before trailing
   G.canvas.height = window.innerHeight;
+  // TODO learn what save, translate mean
+  G.context.save();
+  G.context.translate(0, -G.car.y);
+
   G.car.update();
   G.road.draw(G.context);
   drawCar();
