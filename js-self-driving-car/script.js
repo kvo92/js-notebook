@@ -22,15 +22,17 @@ const drawCar = () => {
   G.car.draw(G.context);
 };
 const animate = () => {
+  G.car.update();
   // resize canvas, clear the before trailing
   G.canvas.height = window.innerHeight;
   // TODO learn what save, translate mean
   G.context.save();
-  G.context.translate(0, -G.car.y);
+  G.context.translate(0, -G.car.y + G.canvas.height * 0.7);
 
-  G.car.update();
   G.road.draw(G.context);
   drawCar();
+
+  G.context.restore();
   requestAnimationFrame(animate);
 };
 const init = () => {
