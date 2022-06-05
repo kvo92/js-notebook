@@ -1,9 +1,10 @@
 import { Controls } from "./controls.js";
+import { Sensor } from "./sensor.js";
 
 export class Car {
   constructor(x, y, width, height) {
     this.controls = new Controls();
-
+    this.sensor = new Sensor(this);
     this.x = x;
     this.y = y;
     this.width = width;
@@ -32,9 +33,11 @@ export class Car {
     );
     context.fill();
     context.restore();
+    this.sensor.draw(context);
   }
-  update() {
+  update(roadBorders) {
     this.#move();
+    this.sensor.update(roadBorders);
   }
   #move() {
     if (this.controls.fw) {

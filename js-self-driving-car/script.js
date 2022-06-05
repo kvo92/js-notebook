@@ -22,6 +22,7 @@ const drawCar = () => {
   G.car.draw(G.context);
 };
 const animate = () => {
+  G.car.update(G.road.borders);
   G.car.update();
   // resize canvas, clear the before trailing
   G.canvas.height = window.innerHeight;
